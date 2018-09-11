@@ -18,49 +18,52 @@ cache:
   directories:
   - node_modules
 before_install:
-- yarn global add @angular/cli@last
+  - yarn global add @angular/cli
 install:
-- yarn install
+  - yarn install
 jobs:
   include:
     - stage: "Tests"
-      name: "Testing Job"
-      script: yarn travis:test
-      name: "Integration Test"
-      script: yarn travis:webdriver-update
-      script: travis:e2e
+        name: "Testing Job"
+        script: yarn travis:test
+        name: "Integration Test"
+        if: branch = "master"
+        script: yarn travis:webdriver-update
+        script: yarn travis:e2e
     - stage: build
-      name: "Build App"
-      script: yarn travis:ci
+        name: "Build App"
+        script: yarn travis:ci
     - stage: deploy to develop
-      name: "Deploy App to Heroku (develop)"
-      deploy:
-        provider: heroku
-        api_key:
-          secure: $HEROKU_API_KEY
-        app: bardock
-        local_dir: dist/bardock
-        skip_cleanup: true
-        on:
-          branch: "develop"
+        name: "Deploy App to Heroku (develop)"
+        deploy:
+          provider: heroku
+          api_key:
+            secure: $HEROKU_API_KEY
+          app: bardock-ng
+          local_dir: dist/bardock
+          skip_cleanup: true
+          on:
+            branch: "develop"
     - stage: deploy to production
-      name: "Deploy App to Firebase Hosting (master)"
-      deploy:
-        provider: firebase
-        api_key:
-          secure: $FIREBASE_API_KEY
-        app: bardock
-        local_dir: dist/bardock
-        skip_cleanup: true
-        on:
-          branch: "master"
+        name: "Deploy App to Firebase Hosting (master)"
+        if: branch = "master"
+        deploy:
+          provider: firebase
+          api_key:
+            secure: $FIREBASE_API_KEY
+          app: bardock
+          local_dir: dist/bardock
+          skip_cleanup: true
+          on:
+            branch: "master"
 branches:
   only:
-  - master
-  - develop
+    - master
+    - develop
 notifications:
   email:
     recipients:
       - krbaio3@gmail.com
     on_success: never # default: change
     on_failure: always # default: always
+  slack: code-solutions-group:yvxdOUQ6wpNwIxdWGwxtXHr8
