@@ -1,0 +1,66 @@
+os:
+  - linux
+service:
+  - docker
+language: node_js
+node_js:
+  - stable
+addons:
+  apt:
+    sources:
+    - google-chrome
+    packages:
+    - google-chrome-stable
+dist: trusty
+sudo: true
+cache:
+  yarn: true
+  directories:
+  - node_modules
+before_install:
+- yarn global add @angular/cli@last
+install:
+- yarn install
+jobs:
+  include:
+    - stage: "Tests"
+      name: "Testing Job"
+      script: yarn travis:test
+      name: "Integration Test"
+      script: yarn travis:webdriver-update
+      script: travis:e2e
+    - stage: build
+      name: "Build App"
+      script: yarn travis:ci
+    - stage: deploy to develop
+      name: "Deploy App to Heroku (develop)"
+      deploy:
+        provider: heroku
+        api_key:
+          secure: $HEROKU_API_KEY
+        app: bardock
+        local_dir: dist/bardock
+        skip_cleanup: true
+        on:
+          branch: "develop"
+    - stage: deploy to production
+      name: "Deploy App to Firebase Hosting (master)"
+      deploy:
+        provider: firebase
+        api_key:
+          secure: $FIREBASE_API_KEY
+        app: bardock
+        local_dir: dist/bardock
+        skip_cleanup: true
+        on:
+          branch: "master"
+branches:
+  only:
+  - master
+  - develop
+notifications:
+  email:
+    recipients:
+      - krbaio3@gmail.com
+    on_success: never # default: change
+    on_failure: always # default: always
