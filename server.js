@@ -47,11 +47,11 @@ console.log(`Este es el baseWebRoot ${baseWebRoot}`);
 // Instalar servidor expressjs
 
 // Decirle que use la carpeta de estaticos dist
-app.use(express.static(baseWebRoot +'/dist/ng5'));
+app.use(express.static(baseWebRoot +'/dist/bardock'));
 
 
 app.get('/*', (req, res) => {
-  res.sendFile(path.join(baseWebRoot + '/dist/ng5/index.html'));
+  res.sendFile(path.join(baseWebRoot + '/dist/bardock/index.html'));
 });
 
 // Arranque de app. por el puerto que diga Heroku o el 5000

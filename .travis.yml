@@ -46,6 +46,9 @@ jobs:
         skip_cleanup: true
         on:
           branch: "develop"
+    - stage: "Test Develop"
+      name: "Curl to Dev"
+      script: 'curl https://bardock-ng.herokuapp.com/'
     - stage: deploy to production
       name: "Deploy App to Firebase Hosting (master)"
       if: branch = master
@@ -58,6 +61,10 @@ jobs:
         skip_cleanup: true
         on:
           branch: "master"
+    - stage: "Test Production"
+      name: "Curl to Prod"
+      if: branch = master
+      script: 'curl https://bardock-ng.herokuapp.com/'
 branches:
   only:
   - master
