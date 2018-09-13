@@ -24,7 +24,7 @@ install:
 jobs:
   include:
     - stage: "Tests"
-      name: "Testing Job"
+      name: "Unit Test"
       script: yarn travis:test
     - stage: "Tests"
       name: "Integration Test"
@@ -36,7 +36,7 @@ jobs:
       script: yarn travis:ci
     - stage: "Deploy to develop"
       name: "Deploy App to Heroku (develop)"
-      if: branch = develop
+      script: skip
       deploy:
         provider: heroku
         api_key:
