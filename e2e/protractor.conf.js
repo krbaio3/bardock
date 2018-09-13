@@ -7,8 +7,6 @@ const HTMLReport = require('protractor-html-reporter-2');
 const jasmineReporters = require('jasmine-reporters');
 
 const rimraf = require('rimraf');
-const fs = require('fs');
-const root = require('./.custom.root.json');
 
 exports.config = {
   allScriptsTimeout: 11000,
