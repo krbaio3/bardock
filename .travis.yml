@@ -1,10 +1,10 @@
 os:
-  - linux
+- linux
 service:
-  - docker
+- docker
 language: node_js
 node_js:
-  - stable
+- stable
 addons:
   apt:
     sources:
@@ -33,10 +33,10 @@ jobs:
       script: yarn travis:e2e
     - stage: "Build"
       name: "Build App"
-      script: yarn travis:ci
+      script: yarn travis:build
     - stage: "Deploy to develop"
       name: "Deploy App to Heroku (develop)"
-      script: skip
+      script: yarn travis:ci
       deploy:
         provider: heroku
         api_key:
@@ -72,8 +72,8 @@ branches:
 notifications:
   email:
     recipients:
-      - krbaio3@gmail.com
-    on_success: never # default: change
-    on_failure: always # default: always
+    - krbaio3@gmail.com
+    on_success: never
+    on_failure: always
   slack:
-    secure: oXp+O19c7j5hl7S+VUhomBEMvia9RYeBRHsW6K5vct20bHvFy5wD1A4G+3I/i+6kmGMAzv6NHFywkT6hJsc9Rz4NucyO6WJVkU2auflh9EmtNgiUDhEKC8/uLbEPiI6UqY7DSuOfEEzbitp1Vhm9iC9te6dkhfH6xKzZL6QhHqXN44+ta+TQr0vJxyId7OqVZhRyh7QzMG1Y9oZz52hTdSCqBoq4gklME+XN3G4smBolgs/O4glpDjdeSh5uWBv/PXuAZ46Sr3ZB3d/pocjV1X6uUppJwnWF6PjsHaB4jvVa2+cZmkUPIcG+FroLRcf+KI+sidiHtCWLZQi+0ZHF7yb3DDmstuu+b7JdNvI/HniaaMGvdNWhngFULLg0JX9jcPeCz9r0VBlRjhKUUWVU6bgB9KPts4yo/jwUvt0o2omwJwWlPVvHUcd2xsvaJbhh8g+I0XhOFj1Bhn1kE3iEqpwB6aPSXFIpFhV56JxnMmW9Te0K1VMW8AoW0lzRI3nBmtY201TrjpLKEwjR0XEWoi4YbWuOcZfel4+byRzTD7Bh5dBE9Btmc9ViCfUTZiI/s2E7zhInAlk0exGCYJF7C50WPb6hb/b0ZZz5AzynW8Z4ZScHH69/a9iveyz3IjoEe3RNPT7UTOd/GjzIPkvaY2kbXmGsudyqfxnd3cq22EM=
+    secure: fIYgEhf20QGAbzXhdHT+Xuh1MVKMZbSsCeNu+GreCXNnDJOnAug9/axNGqf7wl0IOaBa2nYPToC//6LIRiUSKBOCxBKFDNya9htuSTGStt2Dlf1xw9YF2EeqjoydgtM9Z6IbfmWQRu4O/KCsxhtISIgr8ZTOTsJaxGyf9hkSjtDmTaqzwlYQGGres8b7yZUqd+XW637OSxlKPNzq/y0gplaQl3j9Pa7u8L94f/QaU6+ErgQxaz+gLdjs3rMWb0u82brM1BGLLNn49iaJn8lV1aq8N+jQAWys7A8uiwQJ7fL4YtqCvsMuEArHRfRDRawCKU6JL5jYfxOfqnttgPhxuirSh/IfD+7hh5q0waBplo78pQJNg5LovmWRKkvkhazv1kLe+0y/v9ulSPkveTlZvTbI180TEP3qRRJAYF2iOjL77Ailq2eZwP0gPu/EJwOyWXi6SlPbk76SIAGTDhP6xR0vx7goXreHJDQeUJ+Hk9SeCzKH6UmGtzaBsvQlzYCvdyJ5NkQJX/kx09fix12dmIIS/6PLn1tEqSByx3+uId9mfcblBWN+ncK1jIAAT/0k1wtNjvjhEIBM+/vZMHsrsza/A0mU8mdDnV85qV8N6oM/ipIr9Nl6ftEquosdH+p9qRUkMe9btCtEJREUKBpIDoivsHY4d5KipzaW44F27jE=
