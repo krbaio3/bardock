@@ -33,7 +33,7 @@ exports.config = {
     jasmine.getEnv().addReporter(
       new jasmineReporters.JUnitXmlReporter({
         consolidateAll: true,
-        savePath: 'testresults',
+        savePath: 'protractorReport',
         filePrefix: 'xmloutput'
       })
     );

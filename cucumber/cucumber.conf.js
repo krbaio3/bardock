@@ -14,7 +14,7 @@ exports.config = {
 
   // The port to start the selenium server on, or null if the server should
   // find its own unused port.
-  seleniumPort: 4444,
+  // seleniumPort: 4444,
 
   // Capabilities to be passed to the webdriver instance.
   capabilities: {
@@ -22,23 +22,28 @@ exports.config = {
   },
 
   baseUrl: "http://localhost:9876/",
-
-  framework: "custom",
-  frameworkPath: require.resolve("protractor-cucumber-framework"),
+  // set to 'custom' instead of cucumber.
+  framework: 'custom',
+  // path relative to the current config file
+  frameworkPath: require.resolve('protractor-cucumber-framework'),
 
   // Spec patterns are relative to the current working directly when protractor is called.
-  specs: ["./features/*.feature"],
+  specs: [
+    './features/*.feature'
+  ],
 
   // Options to be passed to Cucumber.
   cucumberOpts: {
     // Require files before executing the features.
-    require: "./steps/*.step.js",
+    require: './steps/*.step.js',
     // Only execute the features or scenarios with tags matching @dev.
     // This may be an array of strings to specify multiple tags to include.
     // tags: '@dev',
     // How to format features (progress, summary, pretty, json)
     // format json:xxx => output file in JSON
-    format: "json:./cucumber/result/cucumber.json"
-  }
+    format: 'json:./cucumber/result/cucumber.json'
+  },
+
+  directConnect: true,
 
 };
