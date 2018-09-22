@@ -17,20 +17,29 @@ exports.config = {
   // seleniumPort: 4444,
 
   // Capabilities to be passed to the webdriver instance.
-  capabilities: {
-    browserName: "chrome"
-  },
+  multiCapabilities: [
+    {
+      browserName: 'firefox',
+      'moz:firefoxOptions': {
+        args: ['--safe-mode']
+      }
+    },
+    {
+      browserName: 'chrome',
+      chromeOptions: {
+        args: ['show-fps-counter=true']
+      }
+    }
+  ],
 
-  baseUrl: "http://localhost:9876/",
+  baseUrl: 'http://localhost:9876/',
   // set to 'custom' instead of cucumber.
   framework: 'custom',
   // path relative to the current config file
   frameworkPath: require.resolve('protractor-cucumber-framework'),
 
   // Spec patterns are relative to the current working directly when protractor is called.
-  specs: [
-    './features/*.feature'
-  ],
+  specs: ['./features/*.feature'],
 
   // Options to be passed to Cucumber.
   cucumberOpts: {
@@ -41,9 +50,20 @@ exports.config = {
     // tags: '@dev',
     // How to format features (progress, summary, pretty, json)
     // format json:xxx => output file in JSON
-    format: 'json:./cucumber/result/cucumber.json'
+    format: 'json:cucumberTestReport/results.json'
   },
 
   directConnect: true,
 
+  // Here the magic happens
+  plugins: [
+    {
+      package: 'protractor-multiple-cucumber-html-reporter-plugin',
+      options: {
+        // read the options part for more options
+        automaticallyGenerateReport: true,
+        removeExistingJsonReportFile: true
+      }
+    }
+  ]
 };

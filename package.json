@@ -5,9 +5,8 @@
   "scripts": {
     "build": "ng build --prod",
     "clean": "rimraf dist && rimraf coverage",
-    "webdriver": "node ./node_modules/protractor/bin/webdriver-manager update --standalone --versions.standalone=2.53.1 && webdriver-manager start --versions.standalone=2.53.1 --logging ../../../../logging.properties --ignore_ssl --proxy=\"http://c36004:Atmira$1@ncproxy1:8080/\"",
-    "precucumber": "node ./node_modules/protractor/bin/webdriver-manager update --standalone false --gecko false --ignore_ssl --proxy=\"http://c36004:Atmira$1@ncproxy1:8080/\"",
-    "pree2e": "node ./node_modules/protractor/bin/webdriver-manager update --standalone false --gecko false --versions.chrome 2.42 --ignore_ssl --proxy=\"http://c36004:Atmira$1@ncproxy1:8080/\"",
+    "precucumber": "node ./node_modules/protractor/bin/webdriver-manager update --standalone false --gecko false --ignore_ssl",
+    "pree2e": "node ./node_modules/protractor/bin/webdriver-manager update --standalone false --gecko false --ignore_ssl",
     "cucumber": "protractor cucumber/cucumber.conf.js",
     "e2e": "ng e2e",
     "lint": "ng lint",
@@ -16,9 +15,10 @@
     "test": "ng test",
     "travis:build": "ng build",
     "travis:ci": "ng build --prod --source-map",
+    "travis:cucumber": "protractor cucumber/cucumber-ci.conf.js",
     "travis:e2e": "ng e2e --protractor-config=./e2e/protractor-ci.conf.js",
     "travis:test": "ng test --watch=false --progress=false --browsers=ChromeHeadlessCI --code-coverage --source-map",
-    "travis:webdriver-update": "webdriver-manager update --standalone false --gecko false --versions.chrome 2.37"
+    "travis:webdriver-update": "webdriver-manager update --standalone false --gecko false"
   },
   "dependencies": {
     "@angular/animations": "6.1.7",
@@ -31,7 +31,6 @@
     "@angular/platform-browser-dynamic": "6.1.7",
     "@angular/router": "6.1.7",
     "core-js": "^2.5.4",
-    "cucumber": "^5.0.1",
     "express": "^4.16.3",
     "rxjs": "^6.0.0",
     "zone.js": "~0.8.26"
@@ -46,6 +45,7 @@
     "@types/jasminewd2": "~2.0.3",
     "@types/node": "~8.9.4",
     "codelyzer": "~4.2.1",
+    "cucumber": "^5.0.1",
     "jasmine-core": "~2.99.1",
     "jasmine-reporters": "2.3.0",
     "jasmine-spec-reporter": "~4.2.1",
@@ -57,6 +57,7 @@
     "protractor": "~5.4.0",
     "protractor-cucumber-framework": "6.1.1",
     "protractor-html-reporter-2": "1.0.4",
+    "protractor-multiple-cucumber-html-reporter-plugin": "^1.8.0",
     "rimraf": "2.6.2",
     "ts-node": "~5.0.1",
     "tslint": "~5.9.1",
