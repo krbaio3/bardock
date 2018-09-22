@@ -31,6 +31,11 @@ jobs:
       if: branch = master
       script: yarn travis:webdriver-update
       script: yarn travis:e2e
+    - stage: "Tests"
+      name: "Acceptance Test"
+      if: branch = master
+      script: yarn travis:webdriver-update
+      script: yarn travis:cucumber
     - stage: "Build"
       name: "Build App"
       script: yarn travis:build
