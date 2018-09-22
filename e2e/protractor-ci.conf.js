@@ -9,9 +9,11 @@ config.multiCapabilities = [
   },
   {
     browserName: 'firefox',
-
+    firefoxOptions: {
+      args: ['-headless']
+    },
     'moz:firefoxOptions': {
-      args: ['--headless']
+      args: ['-headless']
     }
   }
 ];
