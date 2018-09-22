@@ -39,3 +39,9 @@ testem.log
 Thumbs.db
 
 package-lock\.json
+
+cucumberTestReport/
+
+protractorTestReport/
+
+cucumber/cucumberJS/

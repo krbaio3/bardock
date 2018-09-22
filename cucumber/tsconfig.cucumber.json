@@ -1,0 +1,18 @@
+{
+  "extends": "../tsconfig.json",
+  "compilerOptions": {
+    "outDir": "./cucumberJS",
+    "module": "commonjs",
+    "sourceMap": false,
+    "target": "es5",
+    "types": [
+      "jasmine",
+      "jasminewd2",
+      "node",
+      "cucumber"
+    ]
+  },
+  "include": [
+    "./**/*"
+  ],
+}

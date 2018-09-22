@@ -1,6 +1,8 @@
-const config = require('./protractor.conf').config;
+import { config } from './cucumber.conf';
+import { Config } from 'protractor';
 
-config.multiCapabilities = [
+
+export default config.multiCapabilities = [
   {
     browserName: 'chrome',
     chromeOptions: {
@@ -15,5 +17,3 @@ config.multiCapabilities = [
     }
   }
 ];
-
-exports.config = config;

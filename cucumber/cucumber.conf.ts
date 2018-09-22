@@ -1,7 +1,10 @@
-// protractor.conf.js
-const path = require('path');
+// protractor.conf.ts
 
-exports.config = {
+import * as path from 'path';
+
+import { Config } from 'protractor';
+
+export const config: Config = {
   allScriptsTimeout: 99999,
 
   // The address of a running selenium server.
@@ -40,19 +43,23 @@ exports.config = {
   frameworkPath: require.resolve('protractor-cucumber-framework'),
 
   // Spec patterns are relative to the current working directly when protractor is called.
-  specs: ['./features/*.feature'],
+  specs: ['../features/*.feature'],
 
   // Options to be passed to Cucumber.
   cucumberOpts: {
+    compiler: 'ts:ts-node/register',
     // Require files before executing the features.
-    require: './steps/*.step.js',
+    require: './cucumberJS/steps/*.step.js',
     // Only execute the features or scenarios with tags matching @dev.
     // This may be an array of strings to specify multiple tags to include.
     // tags: '@dev',
     // How to format features (progress, summary, pretty, json)
     // format json:xxx => output file in JSON
     // format: 'json:./cucumber/result/cucumber.json'
-    format: 'json:cucumberTestReport/results.json'
+    format: 'json:cucumberTestReport/results.json',
+    strict: true,
+    tags:
+      '@CucumberScenario or @ProtractorScenario or @TypeScriptScenario or @OutlineScenario'
   },
 
   directConnect: true,

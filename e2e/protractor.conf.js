@@ -11,9 +11,21 @@ const rimraf = require('rimraf');
 exports.config = {
   allScriptsTimeout: 11000,
   specs: ['./src/**/*.e2e-spec.ts'],
-  capabilities: {
-    browserName: 'chrome'
-  },
+  multiCapabilities: [
+    {
+      browserName: 'firefox',
+      'moz:firefoxOptions': {
+        args: ['--safe-mode']
+      }
+    },
+    {
+      browserName: 'chrome',
+      chromeOptions: {
+        args: ['show-fps-counter=true']
+      }
+    }
+  ],
+
   directConnect: true,
   baseUrl: 'http://localhost:4200/',
   framework: 'jasmine',
@@ -33,7 +45,7 @@ exports.config = {
     jasmine.getEnv().addReporter(
       new jasmineReporters.JUnitXmlReporter({
         consolidateAll: true,
-        savePath: 'protractorReport',
+        savePath: 'protractorTestReport',
         filePrefix: 'xmloutput'
       })
     );
@@ -55,7 +67,7 @@ exports.config = {
       platform = caps.get('platform');
       let testConfig = {
         reportTitle: 'Protractor Test Execution Report',
-        outputPath: './protractorReport',
+        outputPath: './protractorTestReport',
         outputFilename: 'index',
         screenshotPath: './screenshots',
         testBrowser: browserName,
