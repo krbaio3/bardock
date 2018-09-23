@@ -6,6 +6,7 @@ language: node_js
 node_js:
 - stable
 addons:
+  firefox: latest
   apt:
     sources:
     - google-chrome
@@ -13,6 +14,8 @@ addons:
     - google-chrome-stable
 dist: trusty
 sudo: true
+env:
+  - MOZ_HEADLESS=1
 cache:
   yarn: true
   directories:
@@ -27,10 +30,15 @@ jobs:
       name: "Unit Test"
       script: yarn travis:test
     - stage: "Tests"
-      name: "Integration Test"
       if: branch = master
-      script: yarn travis:webdriver-update
+      name: "Integration Test"
+      before_script: yarn travis:webdriver-update
       script: yarn travis:e2e
+    - stage: "Tests"
+      if: branch = master
+      name: "Acceptance Test"
+      before_script: yarn travis:webdriver-update
+      script: yarn travis:cucumber
     - stage: "Build"
       name: "Build App"
       script: yarn travis:build
