@@ -79,7 +79,7 @@ jobs:
     - stage: "Test Production"
       name: "Curl to Prod"
       if: branch = master
-      script: 'curl https://bardock-ng.herokuapp.com/'
+      script: 'curl https://bardock-ng.firebaseapp.com/'
 branches:
   only:
   - master
