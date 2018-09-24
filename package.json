@@ -3,17 +3,20 @@
   "version": "0.0.0",
   "private": true,
   "scripts": {
-    "build": "ng build --prod",
+    "config": "ts-node ./src/set-env.ts",
+    "start": "ng serve --configuration=develop -o",
+    "build": "npm run config -- --environment=prod && ng build --prod --source-map",
     "clean": "rimraf dist && rimraf coverage",
+    "env": "cross-env apiKey=AIzaSyAKf5GM7lk44tf2skIidA8MiK3Tsk1ojcc authDomain=bardock-ng.firebaseapp.com databaseURL=https://bardock-ng.firebaseio.com projectId=bardock-ng storageBucket=bardock-ng.appspot.com messagingSenderId=202247878644 npm run config -- --environment=dev",
+    "env2": "cross-env apiKey=AIzaSyAmHqA1vRSd-kOhaSNkiME5XM1W-Ca--DU authDomain=whis-bc61d.firebaseapp.com databaseURL=https://whis-bc61d.firebaseio.com projectId=whis-bc61d storageBucket=whis-bc61d.appspot.com messagingSenderId=1852983527 npm run config -- --environment=dev",
     "precucumber": "node ./node_modules/protractor/bin/webdriver-manager update",
     "pree2e": "node ./node_modules/protractor/bin/webdriver-manager update --gecko true",
     "cucumber": "protractor cucumber/cucumber.conf.js",
     "e2e": "ng e2e",
     "lint": "ng lint",
     "ng": "ng",
-    "start": "ng serve",
     "test": "ng test",
-    "travis:build": "ng build",
+    "travis:build": "npm run config -- --environment=prod && ng build --prod --source-map",
     "travis:ci": "ng build --prod --source-map",
     "travis:cucumber": "protractor cucumber/cucumber-ci.conf.js",
     "travis:e2e": "ng e2e --protractor-config=./e2e/protractor-ci.conf.js",
@@ -47,7 +50,9 @@
     "@types/jasminewd2": "~2.0.3",
     "@types/node": "~8.9.4",
     "codelyzer": "~4.2.1",
+    "cross-env": "^5.2.0",
     "cucumber": "^5.0.1",
+    "dotenv": "^6.0.0",
     "jasmine-core": "~2.99.1",
     "jasmine-reporters": "2.3.0",
     "jasmine-spec-reporter": "~4.2.1",
@@ -63,6 +68,7 @@
     "rimraf": "2.6.2",
     "ts-node": "~5.0.1",
     "tslint": "~5.9.1",
-    "typescript": "~2.7.2"
+    "typescript": "~2.7.2",
+    "yargs": "^12.0.2"
   }
 }

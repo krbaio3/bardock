@@ -16,6 +16,13 @@ dist: trusty
 sudo: true
 env:
   - MOZ_HEADLESS=1
+  global:
+    - apiKey=$apiKey
+    - authDomain=$authDomain
+    - databaseURL=$databaseURL
+    - projectId=$projectId
+    - storageBucket=$storageBucket
+    - messagingSenderId=$messagingSenderId
 cache:
   yarn: true
   directories:
