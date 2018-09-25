@@ -1,0 +1,6 @@
+{
+  "webdriver": "node ./node_modules/protractor/bin/webdriver-manager update --standalone --versions.standalone=2.53.1 && webdriver-manager start --versions.standalone=2.53.1 --logging ../../../../logging.properties --ignore_ssl --proxy=\"http://c36004:Atmira$1@ncproxy1:8080/\"",
+  "precucumber": "node ./node_modules/protractor/bin/webdriver-manager update --standalone false --gecko false --ignore_ssl --proxy=\"http://c36004:Atmira$1@ncproxy1:8080/\"",
+  "pree2e": "node ./node_modules/protractor/bin/webdriver-manager update --standalone false --gecko false --versions.chrome 2.42 --ignore_ssl --proxy=\"http://c36004:Atmira$1@ncproxy1:8080/\"",
+  "cucumber": "protractor cucumber/cucumber.conf.js"
+}

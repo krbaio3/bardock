@@ -8,7 +8,11 @@
       "sourceRoot": "src",
       "projectType": "application",
       "prefix": "dbz",
-      "schematics": {},
+      "schematics": {
+        "@schematics/angular:component": {
+          "styleext": "scss"
+        }
+      },
       "architect": {
         "build": {
           "builder": "@angular-devkit/build-angular:browser",
@@ -23,7 +27,7 @@
               "src/assets"
             ],
             "styles": [
-              "src/styles.css"
+              "src/styles.scss",
             ],
             "scripts": []
           },
@@ -44,6 +48,14 @@
               "extractLicenses": true,
               "vendorChunk": false,
               "buildOptimizer": true
+            },
+            "develop": {
+              "fileReplacements": [
+                {
+                  "replace": "src/environments/environment.ts",
+                  "with": "src/environments/environment.dev.ts"
+                }
+              ],
             }
           }
         },
@@ -55,6 +67,9 @@
           "configurations": {
             "production": {
               "browserTarget": "bardock:build:production"
+            },
+            "develop": {
+              "browserTarget": "bardock:build:develop"
             }
           }
         },
@@ -67,12 +82,13 @@
         "test": {
           "builder": "@angular-devkit/build-angular:karma",
           "options": {
+            "codeCoverage": true,
             "main": "src/test.ts",
             "polyfills": "src/polyfills.ts",
             "tsConfig": "src/tsconfig.spec.json",
             "karmaConfig": "src/karma.conf.js",
             "styles": [
-              "src/styles.css"
+              "src/styles.scss"
             ],
             "scripts": [],
             "assets": [

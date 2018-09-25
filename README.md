@@ -25,3 +25,7 @@ Run `ng e2e` to execute the end-to-end tests via [Protractor](http://www.protrac
 ## Further help
 
 To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI README](https://github.com/angular/angular-cli/blob/master/README.md).
+
+## Run in develop-mode
+
+The environments.ts is generated dynamicment, and for run in develop mode (for example), we have to have the keys from Firebase. We have to pass the keys as process env.
