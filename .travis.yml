@@ -28,7 +28,8 @@ cache:
   directories:
   - node_modules
 before_install:
-- yarn global add @angular/cli
+  - yarn global add @angular/cli
+  - yarn global add firebase-tools
 install:
 - yarn install
 jobs:
@@ -73,12 +74,12 @@ jobs:
     deploy:
       provider: firebase
       token:
-        secure: Bn3XEUWjyCder5MmkxaJrgLNmRMfjgN31YqDQiQ54ti+5xORI8Yq/HDvSalMhakeI1TOUzalUnBsqESrhQFFLD6x95KAEWvCLWuE7fX3nPXDQz0f34RuQ7HeAknFkazWIvLVApsOpxpr+GIGIhD2H2YuQTwNa3pWhyFdUQCmZeJOjaVjum68yYVIC+wOWX+nxFyKhzGRQ1rNnj009woWiHRqAd8YKyvHrsxauvmJCvujCsM2O7fOVj/jQbXCXoBlKMfAwEueJwnBwsYsZ4we+fX9KPYdsJyundoS/FEuNcEQw97lAquRpyFoVMhQSp7CBRYTinE82hWkrcyHn+HhzNwpbr4lyg8kPG+suy46FdQVjycciV9VRU2XDXWKCsuSoYqBi39MwBa1l8a7xNF0iG0tS+SZHyCoFeUfonSdyOI8kUGc9eRMGPIIWVQSGr+xFVqve6eonizGBJiK4sxNBRPVvevkYbVplCe9XowIHRMVsnyWywNf4qxcbmmo54kT+5sQVI/0tLpHn//P3fM2z5G98vTVETfchiEVw5h14HOKTbSllAmlC5eWWpiSrIpaoIzwyNqRLO/vDAvSF/5ZYDjxVF3uhi8DBDSVeKcOTlMzYDCbw0vFipcptC/rjTED+/YIadGpgMyJp6ej8U+hxZL/2q8JKcdP/nQ/h3xPTc0=
-      app: bardock-ng
-      local_dir: dist/bardock
+        secure: "LZMDRRXDI+65ShAHHhazOSnxuIRZoZ3NDmiEmmrNiO/hlbo42sJ/DrgRMGvWi01Rc3NJGK5oMiyNGP6ml8yY44bWVG0UhS+pDZ8vz5GHDTnV8FQtPLwuxwzLEwyml8nIDmxz6ndIA5LeThwI9J1YjLxbFDDcwTEsKqC3SKeJ1JUkwkSffcLIsmKfAUyOUdi6COsK6T7GagqTRjZ/9xOhAKX7JzAOHytjM2n8JYJBwZL0VeIs1aabfWfCMyV4nsHf1OJYKhRr1vVYiX6ZbdvcROoDR7va7pmVhD7d8zf3hb2K17LsOgaVCiXbhzO9p8X7/9N2HIvmcvfAsSUJBZH1FWwo/CyVcGBkfCpXrTwgCOjyWPIaUAYGlo/5lOw5xY0jIChewDXmCGTebdGs9/VXrNdTxmE2tBqiUNxBig0Ioc0ef0rvb8Te6tASWMFeWbfuaHRi1mfi9OlcWZ6+vpFMpyh/a9LnPvN57qsZ7OGiPi+MGkfUr6DXILZwGhQkXqFKgceKMAE6i7twQ6jt90k+N04woS1Gx9RzKR9so3wjbIrSUSQlyCc3Md7itceK7PNv9DHp85slwAw1syRIz5ZPnzGmGPL6E5SldiUsSxaPq1dJbUIUIAiIpOnwzCObmWz/Fp8ESH6BtDT1L4Tp/O4oY7NjjEs3tee38zkSml3ZLiw="
+      project: "bardock"
       skip_cleanup: true
       on:
         branch: master
+    after_success: firebase deploy --token $FIREBASE_API_KEY
   - stage: Test Production
     name: Curl to Prod
     if: branch = master

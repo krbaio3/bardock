@@ -50,7 +50,6 @@
     "cross-env": "^5.2.0",
     "cucumber": "^5.0.1",
     "dotenv": "^6.0.0",
-    "firebase-tools": "^4.2.1",
     "jasmine-core": "~2.99.1",
     "jasmine-reporters": "2.3.0",
     "jasmine-spec-reporter": "~4.2.1",
