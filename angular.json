@@ -69,7 +69,7 @@
               "browserTarget": "bardock:build:production"
             },
             "develop": {
-              "browserTarget": "whis:build:develop"
+              "browserTarget": "bardock:build:develop"
             }
           }
         },
