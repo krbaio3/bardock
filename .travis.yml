@@ -51,6 +51,7 @@ jobs:
     script: yarn travis:build
   - stage: Deploy to develop
     name: Deploy App to Heroku (develop)
+    if: branch = develop
     script: yarn travis:ci
     deploy:
       provider: heroku
@@ -63,6 +64,7 @@ jobs:
         branch: develop
   - stage: Test Develop
     name: Curl to Dev
+    if: branch = develop
     script: curl https://bardock-ng.herokuapp.com/
   - stage: deploy to production
     name: Deploy App to Firebase Hosting (master)
