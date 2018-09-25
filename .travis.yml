@@ -15,14 +15,14 @@ addons:
 dist: trusty
 sudo: true
 env:
-  - MOZ_HEADLESS=1
   global:
-    - apiKey=$apiKey
-    - authDomain=$authDomain
-    - databaseURL=$databaseURL
-    - projectId=$projectId
-    - storageBucket=$storageBucket
-    - messagingSenderId=$messagingSenderId
+  - apiKey=$apiKey
+  - authDomain=$authDomain
+  - databaseURL=$databaseURL
+  - projectId=$projectId
+  - storageBucket=$storageBucket
+  - messagingSenderId=$messagingSenderId
+  - MOZ_HEADLESS=1
 cache:
   yarn: true
   directories:
@@ -33,53 +33,56 @@ install:
 - yarn install
 jobs:
   include:
-    - stage: "Tests"
-      name: "Unit Test"
-      script: yarn travis:test
-    - stage: "Tests"
-      if: branch = master
-      name: "Integration Test"
-      before_script: yarn travis:webdriver-update
-      script: yarn travis:e2e
-    - stage: "Tests"
-      if: branch = master
-      name: "Acceptance Test"
-      before_script: yarn travis:webdriver-update
-      script: yarn travis:cucumber
-    - stage: "Build"
-      name: "Build App"
-      script: yarn travis:build
-    - stage: "Deploy to develop"
-      name: "Deploy App to Heroku (develop)"
-      script: yarn travis:ci
-      deploy:
-        provider: heroku
-        api_key:
-          secure: $HEROKU_API_KEY
-        app: bardock-ng
-        local_dir: dist/bardock
-        skip_cleanup: true
-        on:
-          branch: "develop"
-    - stage: "Test Develop"
-      name: "Curl to Dev"
-      script: 'curl https://bardock-ng.herokuapp.com/'
-    - stage: deploy to production
-      name: "Deploy App to Firebase Hosting (master)"
-      if: branch = master
-      deploy:
-        provider: firebase
-        api_key:
-          secure: $FIREBASE_API_KEY
-        app: bardock
-        local_dir: dist/bardock
-        skip_cleanup: true
-        on:
-          branch: "master"
-    - stage: "Test Production"
-      name: "Curl to Prod"
-      if: branch = master
-      script: 'curl https://bardock-ng.herokuapp.com/'
+  - stage: Tests
+    name: Unit Test
+    script: yarn travis:test
+  - stage: Tests
+    if: branch = master
+    name: Integration Test
+    before_script: yarn travis:webdriver-update
+    script: yarn travis:e2e
+  - stage: Tests
+    if: branch = master
+    name: Acceptance Test
+    before_script: yarn travis:webdriver-update
+    script: yarn travis:cucumber
+  - stage: Build
+    name: Build App
+    script: yarn travis:build
+  - stage: Deploy to develop
+    name: Deploy App to Heroku (develop)
+    if: branch = develop
+    script: yarn travis:build
+    deploy:
+      provider: heroku
+      api_key:
+        secure: "$HEROKU_API_KEY"
+      app: bardock-ng
+      local_dir: dist/bardock
+      skip_cleanup: true
+      on:
+        branch: develop
+  - stage: Test Develop
+    name: Curl to Dev
+    if: branch = develop
+    script: curl https://bardock-ng.herokuapp.com/
+  - stage: deploy to production
+    name: Deploy App to Firebase Hosting (master)
+    if: branch = master
+    script: yarn travis:build
+    deploy:
+      provider: firebase
+      token:
+        secure: Bn3XEUWjyCder5MmkxaJrgLNmRMfjgN31YqDQiQ54ti+5xORI8Yq/HDvSalMhakeI1TOUzalUnBsqESrhQFFLD6x95KAEWvCLWuE7fX3nPXDQz0f34RuQ7HeAknFkazWIvLVApsOpxpr+GIGIhD2H2YuQTwNa3pWhyFdUQCmZeJOjaVjum68yYVIC+wOWX+nxFyKhzGRQ1rNnj009woWiHRqAd8YKyvHrsxauvmJCvujCsM2O7fOVj/jQbXCXoBlKMfAwEueJwnBwsYsZ4we+fX9KPYdsJyundoS/FEuNcEQw97lAquRpyFoVMhQSp7CBRYTinE82hWkrcyHn+HhzNwpbr4lyg8kPG+suy46FdQVjycciV9VRU2XDXWKCsuSoYqBi39MwBa1l8a7xNF0iG0tS+SZHyCoFeUfonSdyOI8kUGc9eRMGPIIWVQSGr+xFVqve6eonizGBJiK4sxNBRPVvevkYbVplCe9XowIHRMVsnyWywNf4qxcbmmo54kT+5sQVI/0tLpHn//P3fM2z5G98vTVETfchiEVw5h14HOKTbSllAmlC5eWWpiSrIpaoIzwyNqRLO/vDAvSF/5ZYDjxVF3uhi8DBDSVeKcOTlMzYDCbw0vFipcptC/rjTED+/YIadGpgMyJp6ej8U+hxZL/2q8JKcdP/nQ/h3xPTc0=
+      app: bardock-ng
+      local_dir: dist/bardock
+      skip_cleanup: true
+      on:
+        branch: master
+  - stage: Test Production
+    name: Curl to Prod
+    if: branch = master
+    script: curl https://bardock-ng.firebaseapp.com/
 branches:
   only:
   - master
