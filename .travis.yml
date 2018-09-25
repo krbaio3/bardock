@@ -56,7 +56,7 @@ jobs:
     deploy:
       provider: heroku
       api_key:
-        secure: $HEROKU_API_KEY
+        secure: "$HEROKU_API_KEY"
       app: bardock-ng
       local_dir: dist/bardock
       skip_cleanup: true
@@ -73,7 +73,7 @@ jobs:
     deploy:
       provider: firebase
       token:
-        secure: fCjNvtxN6wpqAPv4hcILMRbyvWMF+WuhR+rEphTN+4PZvbwO0LvptoTzAQsWHOXO+I5dCRhKvMkCPZFjDLttu8LW493vsBZqnh6rOZq/ERPnwSExhfeydWl0Y4cda3ByP4D/dwhm5VIACsDUAFXaylt3EJREgAjTv5VR4lVuvHAFfy/b4YxX61Z4RWuwqOB3LC4+qbIo5za7MgbrfbsEtzZAEcoK3MdNH7wv9Z9cw5wMm0fQ4Wc4guEXKAQJ4nOV89Pk0k7z9qUfB2wMdalIKR+19bW+3HSZe8mMflTQxjXz5KIP5R/JmPKHJAiEt13MWXiC4G/s+R+4zPEM5FPtxl+koepNAsuMDkj6aUKlSO9HRX/JH3lniffCATm+AxEYIbavaPR9OYFpwtn2mGxE8BL03UZ0FqOCUx8LANNpjUZGmDTxWEz184qqLj7K07DfR3X+MM5gun1KWrLzdCckz10dLYmEWgN5oNlFaK5yuQceJkkFIhQ4OzFnT13jIV3hOKIjGtlAedoXPh2H3CHrj+wl/4XOYiU8/NKzLsomm0iOonkfZV5pkS44bUHnNsazjGSjIgvum6yhSvlk6KOs4v/LA0ADvsEZuxsM3PZAIyxKjCZZFjyMTnnAqGl+sen5tKzKBhN07jSyI3iyY2D9zvzI+RyDtcy/TcGsu+7qGJ8=
+        secure: AglQLKtjbY1XkXG7g6XyPxRkqgnLk9mNz8Ni2BQo2YAt3UTqv5ATiiWfaWezF+1PqOQi/O2+nb2azkY4SFe/4X80dux3f+RLjzd5rnunUGX4Ms00hESEnuA4B+Gdl7iEcc45Y2mPRFW2gaEKbe7ByyllxlVjag7BW9ZbzASJlkcDGXlZWybzrqiFbfEURse4a9QI5deUw+4PrNAwCVL4iChHvto9kB/VUDwtkithNgvVyLaPaGiGYxi8EvNZ6OJ8x0TKxwQ0dgrV5hmOdW8nX/y83wxDx82JSoYVQMMs31L+p+j5Wo0pQYfWVcGJ2cW91NEXYRVYE4XErg3eKvtmtVZZCBoBjHOwNY1E9rOHRgD8mQA5WuWt5irEdRZ3WTic9w+FZs1PxW+9ZQ+FnrM+DVxi7V2P/A79lrUnzxTOvRYyJZYeUHmodjyZ3/ooaGx9VA5iryEJ9O5NQhbNNJeh3ro7Kgg2rPlLAsU8j834qn8uo3PijaTtNqfHaINBps3CCN4ADNnCynHPZKk0ka8bBm3lYio6pxCC+VZUqex/QkiB5fZ019w75aMn7jNWPZo1kHSGvkMTol2RKXo5OAk7WOKd8bZ/dmrHcMDkBSHMnY57k3GPk9VEa0kOGMhA6xi5urRu7HfA6SPrLXqhi6c2847qe1Yf02AqXqF14vLZ+1E=
       app: bardock
       local_dir: dist/bardock
       skip_cleanup: true
