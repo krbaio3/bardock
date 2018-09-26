@@ -15,71 +15,68 @@ addons:
 dist: trusty
 sudo: true
 env:
-  - MOZ_HEADLESS=1
   global:
-    - apiKey=$apiKey
-    - authDomain=$authDomain
-    - databaseURL=$databaseURL
-    - projectId=$projectId
-    - storageBucket=$storageBucket
-    - messagingSenderId=$messagingSenderId
+  - apiKey=$apiKey
+  - authDomain=$authDomain
+  - databaseURL=$databaseURL
+  - projectId=$projectId
+  - storageBucket=$storageBucket
+  - messagingSenderId=$messagingSenderId
+  - MOZ_HEADLESS=1
 cache:
   yarn: true
   directories:
   - node_modules
 before_install:
 - yarn global add @angular/cli
+- yarn global add firebase-tools
 install:
 - yarn install
 jobs:
   include:
-    - stage: "Tests"
-      name: "Unit Test"
-      script: yarn travis:test
-    - stage: "Tests"
-      if: branch = master
-      name: "Integration Test"
-      before_script: yarn travis:webdriver-update
-      script: yarn travis:e2e
-    - stage: "Tests"
-      if: branch = master
-      name: "Acceptance Test"
-      before_script: yarn travis:webdriver-update
-      script: yarn travis:cucumber
-    - stage: "Build"
-      name: "Build App"
-      script: yarn travis:build
-    - stage: "Deploy to develop"
-      name: "Deploy App to Heroku (develop)"
-      script: yarn travis:ci
-      deploy:
-        provider: heroku
-        api_key:
-          secure: $HEROKU_API_KEY
-        app: bardock-ng
-        local_dir: dist/bardock
-        skip_cleanup: true
-        on:
-          branch: "develop"
-    - stage: "Test Develop"
-      name: "Curl to Dev"
-      script: 'curl https://bardock-ng.herokuapp.com/'
-    - stage: deploy to production
-      name: "Deploy App to Firebase Hosting (master)"
-      if: branch = master
-      deploy:
-        provider: firebase
-        api_key:
-          secure: $FIREBASE_API_KEY
-        app: bardock
-        local_dir: dist/bardock
-        skip_cleanup: true
-        on:
-          branch: "master"
-    - stage: "Test Production"
-      name: "Curl to Prod"
-      if: branch = master
-      script: 'curl https://bardock-ng.herokuapp.com/'
+  - stage: Tests
+    name: Unit Test
+    script: yarn travis:test
+  - stage: Tests
+    if: branch = master
+    name: Integration Test
+    before_script: yarn travis:webdriver-update
+    script: yarn travis:e2e
+  - stage: Tests
+    if: branch = master
+    name: Acceptance Test
+    before_script: yarn travis:webdriver-update
+    script: yarn travis:cucumber
+  - stage: Build
+    name: Build App
+    script: yarn travis:build
+  - stage: Deploy to develop
+    name: Deploy App to Heroku (develop)
+    if: branch = develop
+    script: yarn travis:build
+    deploy:
+      provider: heroku
+      api_key:
+        secure: "$HEROKU_API_KEY"
+      app: bardock-ng
+      local_dir: dist/bardock
+      skip_cleanup: true
+      on:
+        branch: develop
+  - stage: Test Develop
+    name: Curl to Dev
+    if: branch = develop
+    script: curl https://bardock-ng.herokuapp.com/
+  - stage: deploy to production
+    name: Deploy App to Firebase Hosting (master)
+    if: branch = master
+    script: yarn travis:build
+    if: branch = master
+    after_script: yarn travis:deploy
+  - stage: Test Production
+    name: Curl to Prod
+    if: branch = master
+    script: curl https://bardock-ng.firebaseapp.com/
 branches:
   only:
   - master

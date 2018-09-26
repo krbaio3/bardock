@@ -5,7 +5,7 @@
   "scripts": {
     "config": "ts-node --project tsconfig.env.json ./src/set-env.ts",
     "start": "ng serve --configuration=develop -o",
-    "build": "npm run config -- --environment=prod && ng build --prod --source-map",
+    "build": "npm run config -- --environment=prod && ng build --prod",
     "clean": "rimraf dist && rimraf coverage",
     "precucumber": "node ./node_modules/protractor/bin/webdriver-manager update",
     "pree2e": "node ./node_modules/protractor/bin/webdriver-manager update --gecko true",
@@ -14,14 +14,16 @@
     "lint": "ng lint",
     "ng": "ng",
     "test": "ng test",
-    "travis:build": "npm run config -- --environment=prod && ng build --prod --source-map",
-    "travis:ci": "ng build --prod --source-map",
+    "travis:build": "npm run config -- --environment=prod && ng build --prod",
+    "travis:ci": "ng build --prod",
     "travis:cucumber": "protractor cucumber/cucumber-ci.conf.js",
     "travis:e2e": "ng e2e --protractor-config=./e2e/protractor-ci.conf.js",
     "travis:test": "ng test --watch=false --progress=false --browsers=ChromeHeadlessCI --code-coverage --source-map",
     "travis:webdriver-update": "node ./node_modules/protractor/bin/webdriver-manager update --gecko true",
     "pretravis:e2e": "node ./node_modules/protractor/bin/webdriver-manager update --gecko true",
-    "pretravis:cucumber": "node ./node_modules/protractor/bin/webdriver-manager update --gecko true"
+    "pretravis:cucumber": "node ./node_modules/protractor/bin/webdriver-manager update --gecko true",
+    "travis:login":"firebase login --token $FIREBASE_TOKEN -y",
+    "travis:deploy": "firebase deploy --token $FIREBASE_TOKEN"
   },
   "dependencies": {
     "@angular/animations": "6.1.7",
