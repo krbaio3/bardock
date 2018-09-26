@@ -29,7 +29,6 @@ cache:
   - node_modules
 before_install:
 - yarn global add @angular/cli
-- yarn global add firebase-tools
 install:
 - yarn install
 jobs:
@@ -69,6 +68,8 @@ jobs:
     script: curl https://bardock-ng.herokuapp.com/
   - stage: deploy to production
     name: Deploy App to Firebase Hosting (master)
+    if: branch = master
+    before_script: yarn global add firebase-tools
     if: branch = master
     script: yarn travis:build
     if: branch = master
