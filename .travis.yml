@@ -29,6 +29,7 @@ cache:
   - node_modules
 before_install:
 - yarn global add @angular/cli
+- yarn global add firebase-tools
 install:
 - yarn install
 jobs:
@@ -52,7 +53,7 @@ jobs:
   - stage: Deploy to develop
     name: Deploy App to Heroku (develop)
     if: branch = develop
-    script: yarn travis:ci
+    script: yarn travis:build
     deploy:
       provider: heroku
       api_key:
@@ -69,16 +70,9 @@ jobs:
   - stage: deploy to production
     name: Deploy App to Firebase Hosting (master)
     if: branch = master
-    script: yarn travis:ci
-    deploy:
-      provider: firebase
-      token:
-        secure: AglQLKtjbY1XkXG7g6XyPxRkqgnLk9mNz8Ni2BQo2YAt3UTqv5ATiiWfaWezF+1PqOQi/O2+nb2azkY4SFe/4X80dux3f+RLjzd5rnunUGX4Ms00hESEnuA4B+Gdl7iEcc45Y2mPRFW2gaEKbe7ByyllxlVjag7BW9ZbzASJlkcDGXlZWybzrqiFbfEURse4a9QI5deUw+4PrNAwCVL4iChHvto9kB/VUDwtkithNgvVyLaPaGiGYxi8EvNZ6OJ8x0TKxwQ0dgrV5hmOdW8nX/y83wxDx82JSoYVQMMs31L+p+j5Wo0pQYfWVcGJ2cW91NEXYRVYE4XErg3eKvtmtVZZCBoBjHOwNY1E9rOHRgD8mQA5WuWt5irEdRZ3WTic9w+FZs1PxW+9ZQ+FnrM+DVxi7V2P/A79lrUnzxTOvRYyJZYeUHmodjyZ3/ooaGx9VA5iryEJ9O5NQhbNNJeh3ro7Kgg2rPlLAsU8j834qn8uo3PijaTtNqfHaINBps3CCN4ADNnCynHPZKk0ka8bBm3lYio6pxCC+VZUqex/QkiB5fZ019w75aMn7jNWPZo1kHSGvkMTol2RKXo5OAk7WOKd8bZ/dmrHcMDkBSHMnY57k3GPk9VEa0kOGMhA6xi5urRu7HfA6SPrLXqhi6c2847qe1Yf02AqXqF14vLZ+1E=
-      app: bardock
-      local_dir: dist/bardock
-      skip_cleanup: true
-      on:
-        branch: master
+    script: yarn travis:build
+    if: branch = master
+    after_script: yarn travis:deploy
   - stage: Test Production
     name: Curl to Prod
     if: branch = master
