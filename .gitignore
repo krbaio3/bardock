@@ -43,3 +43,5 @@ package-lock\.json
 cucumberTestReport/
 
 protractorTestReport/
+
+src/environments/environment\.dev\.ts
