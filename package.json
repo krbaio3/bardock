@@ -1,6 +1,6 @@
 {
   "name": "bardock",
-  "version": "0.0.0",
+  "version": "0.1.0",
   "private": true,
   "scripts": {
     "config": "ts-node --project tsconfig.env.json ./src/set-env.ts",
