@@ -7,6 +7,7 @@ import { AppComponent } from './app.component';
 
 import localeEs from '@angular/common/locales/es';
 import localeEsExtra from '@angular/common/locales/extra/es';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 registerLocaleData(localeEs, 'es-ES', localeEsExtra);
 
@@ -16,7 +17,8 @@ registerLocaleData(localeEs, 'es-ES', localeEsExtra);
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule
+    AppRoutingModule,
+    BrowserAnimationsModule
   ],
   providers: [],
   bootstrap: [AppComponent]
