@@ -8,17 +8,24 @@ import { AppComponent } from './app.component';
 import localeEs from '@angular/common/locales/es';
 import localeEsExtra from '@angular/common/locales/extra/es';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { MyOwnCustomMaterialModule } from './material/material.module';
+
+import { HomeComponent } from './home/home.component';
+import { ThemeComponent } from './theme/theme.component';
 
 registerLocaleData(localeEs, 'es-ES', localeEsExtra);
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
+    HomeComponent,
+    ThemeComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
-    BrowserAnimationsModule
+    BrowserAnimationsModule,
+    MyOwnCustomMaterialModule
   ],
   providers: [],
   bootstrap: [AppComponent]
