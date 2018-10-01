@@ -45,3 +45,5 @@ cucumberTestReport/
 protractorTestReport/
 
 src/environments/environment\.dev\.ts
+
+\.history/
