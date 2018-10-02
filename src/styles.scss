@@ -1,20 +1,24 @@
 /* You can add global styles to this file, and also import other style files */
 
-@import "variables";
-@import "../node_modules/font-awesome/scss/font-awesome";
+@import 'variables';
+@import '~font-awesome/scss/font-awesome';
+// import our custom theme
+@import 'theme.scss';
 
-html, body {
-    height: 100%;
+html,
+body {
+  height: 100%;
 }
 
 body {
-    margin: 0;
-    font-family: 'Roboto', sans-serif;
+  margin: 0;
+  font-family: 'Roboto', sans-serif;
 }
 
 .success {
-    color: $success;
+  color: $success;
 }
+
 .danger {
   color: $danger;
 }

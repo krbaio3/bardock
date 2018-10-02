@@ -12,14 +12,14 @@ describe('HomeComponent', () => {
       ],
     }).compileComponents();
   }));
-  it('should create the app', async(() => {
+  it('should create the home', async(() => {
     const fixture = TestBed.createComponent(HomeComponent);
-    const app = fixture.debugElement.componentInstance;
-    expect(app).toBeTruthy();
+    const home = fixture.debugElement.componentInstance;
+    expect(home).toBeTruthy();
   }));
   it(`should have as title 'bardock'`, async(() => {
     const fixture = TestBed.createComponent(HomeComponent);
-    const app = fixture.debugElement.componentInstance;
+    const home = fixture.debugElement.componentInstance;
     expect(app.title).toEqual('bardock');
   }));
   it('should render title in a h1 tag', async(() => {

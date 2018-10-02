@@ -5,10 +5,6 @@ import { ThemeComponent } from './theme/theme.component';
 
 const routes: Routes = [
   {
-    path: '',
-    component: HomeComponent
-  },
-  {
     path: 'home',
     component: HomeComponent
   },
@@ -16,7 +12,12 @@ const routes: Routes = [
     path: 'theme',
     component: ThemeComponent
   },
-  { path: '**', redirectTo: '/home' }
+  {
+    path: '',
+    redirectTo: '/home',
+    pathMatch: 'full'
+  }
+  // { path: '**', component: PageNotFoundComponent }
 ];
 
 @NgModule({
