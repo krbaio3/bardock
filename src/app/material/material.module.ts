@@ -5,7 +5,17 @@ import {
   MatOptionModule,
   MatSelectModule,
   MatFormFieldModule,
-  MatInputModule
+  MatInputModule,
+  MatSidenavModule,
+  MatToolbarModule,
+  MatMenuModule,
+  MatDialogModule,
+  MatSnackBarModule,
+  MatBottomSheetModule,
+  MatListModule,
+  MatIconModule,
+  ErrorStateMatcher,
+  ShowOnDirtyErrorStateMatcher
 } from '@angular/material';
 
 @NgModule({
@@ -15,7 +25,16 @@ import {
     MatOptionModule,
     MatSelectModule,
     MatFormFieldModule,
-    MatInputModule
+    MatInputModule,
+    MatSidenavModule,
+    MatToolbarModule,
+    MatMenuModule,
+    MatDialogModule,
+    MatSnackBarModule,
+    MatBottomSheetModule,
+    MatListModule,
+    MatIconModule,
+
   ],
   exports: [
     MatButtonModule,
@@ -23,7 +42,21 @@ import {
     MatOptionModule,
     MatSelectModule,
     MatFormFieldModule,
-    MatInputModule
+    MatInputModule,
+    MatSidenavModule,
+    MatToolbarModule,
+    MatMenuModule,
+    MatDialogModule,
+    MatSnackBarModule,
+    MatBottomSheetModule,
+    MatListModule,
+    MatIconModule,
+
+  ],
+  providers: [
+    { provide: ErrorStateMatcher, useClass: ShowOnDirtyErrorStateMatcher }
   ]
 })
-export class MyOwnCustomMaterialModule {}
+export class MyOwnCustomMaterialModule {
+  constructor() {}
+}

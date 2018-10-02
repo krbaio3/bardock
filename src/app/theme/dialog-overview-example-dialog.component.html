@@ -1,0 +1,40 @@
+<h1 mat-dialog-title>Hi {{data.name}}</h1>
+<div mat-dialog-content>
+  <p>What's your favorite animal?</p>
+  <mat-form-field>
+    <input matInput [(ngModel)]="data.animal">
+  </mat-form-field>
+</div>
+<div mat-dialog-actions>
+  <button mat-button (click)="onNoClick()">No Thanks</button>
+  <button mat-button [mat-dialog-close]="data.animal" cdkFocusInitial>Ok</button>
+</div>
+
+<p>
+  Lorem Rajoy Ipsum ¿eh? no fue cosa menor no fue cosa menor a veces es mejor estar quieto y en otras no mejor para mí
+  el
+  suyo, beneficio político lo que no van a hacer nunca las máquinas es fabricar máquinas. Como decía Galileo, el
+  movimiento siempre se acelera cuando se va detener salvo algunas cosas por las carreteras tienen que ir coches y de
+  los
+  aeropuertos tienen que salir aviones es el vecino el que elije al alcalde. Una cosa es ser solidario y otra es serlo
+  a
+  cambio de nada lo que no van a hacer nunca las máquinas es fabricar máquinas los vecinos el alcalde muy españoles un
+  vaso es un vaso y un plato es un plato luego ya veremos grave afrenta a la estabilidad de ¿Ustedes piensan antes de
+  hablar o hablan tras pensar? salvo algunas cosas los catalanes hacen cosas una cosa es ser solidario y otra es serlo
+  a
+  cambio de nada. Los chuches es el vecino el que elije al alcalde los catalanes hacen cosas no es cosa menor, dicho de
+  otra manera, es cosa mayor exportar es positivo porque vendes lo que produces y es el alcalde el que quiere que sean
+  y
+  es el alcalde el que quiere que sean mucho españoles. Los chuches A veces moverse es bueno, otras veces no los
+  chuches
+  a veces es mejor estar quieto y en otras no un vaso es un vaso y un plato es un plato y en ocasiones es mejor estar
+  en
+  movimiento no fue cosa menor. Por las carreteras tienen que ir coches y de los aeropuertos tienen que salir aviones y
+  es el alcalde el que quiere que sean cuanto mejor peor para todos lo que no van a hacer nunca las máquinas es
+  fabricar
+  máquinas como decía Galileo, el movimiento siempre se acelera cuando se va detener. Salvo algunas cosas y cuanto peor
+  para todos mejor mejor para mí el suyo, beneficio político exportar es positivo porque vendes lo que produces ETA es
+  una gran nación no es cosa menor, dicho de otra manera, es cosa mayor lo que no van a hacer nunca las máquinas es
+  fabricar máquinas una cosa es ser solidario y otra es serlo a cambio de nada salvo algunas cosas y cuanto peor para
+  todos mejor lo más importante que se puede hacer por vosotros es lo que vosotros podáis hacer por nosotros.
+</p>
