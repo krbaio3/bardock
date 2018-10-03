@@ -4,6 +4,8 @@ import { registerLocaleData } from '@angular/common';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
+import { ThemeComponent } from './theme/theme.component';
+import { HomeComponent } from './home/home.component';
 
 import localeEs from '@angular/common/locales/es';
 import localeEsExtra from '@angular/common/locales/extra/es';
@@ -13,7 +15,9 @@ registerLocaleData(localeEs, 'es-ES', localeEsExtra);
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
+    ThemeComponent,
+    HomeComponent
   ],
   imports: [
     BrowserModule,

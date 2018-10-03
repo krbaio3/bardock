@@ -6,8 +6,5 @@ import { Component } from '@angular/core';
   styleUrls: ['./app.component.scss']
 })
 export class AppComponent {
-  title = 'bardock';
-  public variable1: boolean;
-  public variable2: boolean;
-  public variable3: boolean;
+  constructor() {}
 }
