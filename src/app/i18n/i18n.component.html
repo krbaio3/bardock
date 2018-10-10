@@ -1,0 +1,88 @@
+<div class="container">
+  <div>
+    <h2>{{ 'I18N.TITLE' | translate }}</h2>
+    <label>
+      {{ 'I18N.CURRENT' | translate }}
+      <!-- <select #langSelect (change)="translate.use(langSelect.value)">
+      <option *ngFor="let lang of translate.getLangs()" [value]="lang" [selected]="lang === translate.currentLang">{{
+        lang }}</option>
+    </select> -->
+    </label>
+    <mat-form-field>
+      <mat-select placeholder="select Language" [(value)]="selectedLanguage" (selectionChange)="translate.use(selectedLanguage)"
+        class="capitalize">
+        <mat-select-trigger>
+          <img *ngIf="selectedLanguage" src="assets/img/{{selectedLanguage}}.jpg">
+          {{selectedLanguage}}
+        </mat-select-trigger>
+        <mat-option *ngFor="let lang of translate.getLangs()" [value]="lang">
+          <img src="/assets/img/{{ lang | lowercase}}.jpg"><span class="upperCase">{{ lang }}</span>
+        </mat-option>
+      </mat-select>
+    </mat-form-field>
+
+    <p> Selected value: {{ selectedLanguage }} </p>
+
+  </div>
+
+  <h2>{{'I18N.STATIC'|translate}}</h2>
+  <h3 class="ml-1">{{'I18N.STATIC-TIME'|translate}}</h3>
+  <ol>
+    {{'I18N.TIME' | translate}} {{ fecha | date:'medium':undefined:'es-ES' }}
+  </ol>
+  <ol>
+    {{'I18N.TIME' | translate}} {{ fecha | date:'short':undefined:'es-ES' }}
+  </ol>
+  <ol>
+    {{'I18N.TIME' | translate}} {{ fecha | date:'short':'en-US' }}
+  </ol>
+
+  <h3 class="ml-1">{{'I18N.STATIC-CURRENCY'|translate}}</h3>
+  <ol>{{'I18N.CURRENCY' | translate}} {{ monedas | currency:'EUR':'symbol-narrow':undefined:'es-ES' }}</ol>
+  <ol>{{'I18N.CURRENCY' | translate}} {{ monedas | currency:'EUR':'symbol':undefined:'es-ES' }}</ol>
+  <ol>{{'I18N.CURRENCY' | translate}} {{ monedas | currency:'USD':'symbol-narrow':undefined:'en-US' }}</ol>
+  <ol>{{'I18N.CURRENCY' | translate}} {{ monedas | currency:'USD':'symbol':undefined:'en-US' }}</ol>
+  <ol>{{'I18N.CURRENCY' | translate}} {{ monedas | currency:'USD':'symbol-narrow' }}</ol>
+  <ol>{{'I18N.CURRENCY' | translate}} {{ monedas | currency:'USD':'symbol' }}</ol>
+
+
+
+
+  <h2>{{'I18N.DYNAMICALLY' | translate }}</h2>
+
+  <!--
+<mat-form-field>
+  <mat-select placeholder="select Language" [(value)]="selectedLanguage" name="language">
+    <mat-select-trigger>
+      <img *ngIf="selectedLanguage" src="/assets/img/{{selectedLanguage}}.jpg">
+    </mat-select-trigger>
+<mat-option *ngFor="let lang of translate.getLangs()" [value]="lang">
+      <img src="/assets/img/{{ lang | lowercase}}.jpg">{{ lang }}
+    </mat-option>
+  </mat-select>
+</mat-form-field> -->
+
+  <p>{{'I18N.TIME' | translate}} {{ fecha | date:'medium':undefined:translate.currentLang.toString() }}</p>
+  <p>{{'I18N.TIME' | translate}} {{ fecha | date:'short':undefined:translate.currentLang.toString() }}</p>
+
+
+  <p>{{'I18N.CURRENCY' | translate}} {{ monedas |
+    currency:'EUR':'symbol-narrow':undefined:translate.currentLang.toString() }}</p>
+
+  <p>{{'I18N.CURRENCY' | translate}} {{ monedas | currency:'EUR':'symbol':undefined:translate.currentLang.toString() }}</p>
+
+  <p>{{'I18N.CURRENCY' | translate}} {{ monedas |
+    currency:'USD':'symbol-narrow':undefined:translate.currentLang.toString() }}</p>
+  <p>{{'I18N.CURRENCY' | translate}} {{ monedas | currency:'USD':'symbol':undefined:translate.currentLang.toString() }}</p>
+
+  <button mat-flat-button color="warn" (click)="onClick(translate.currentLang)">{{ 'I18N.SEND' | translate }}</button>
+
+
+
+</div>
+
+<div class="grid-container-bottom">
+  <div class="item">
+<button mat-raised-button color="primary" [routerLink]="['/home']">{{ 'I18N.BACK' | translate }}</button>
+  </div>
+</div>

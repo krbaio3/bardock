@@ -1,0 +1,15 @@
+{
+  "I18N": {
+    "TITLE": "Hola Angular with ngx-translate!",
+    "SELECT": "Cambiar el lenguaje",
+    "TIME": "Hora actual: ",
+    "CURRENCY": "Pipe de Moneda: ",
+    "DYNAMICALLY": "Dinámicamente:",
+    "CURRENT":"Divisa: ",
+    "STATIC": "Formato Estático de Fecha y Hora",
+    "STATIC-TIME": "Formato de Tiempo Estático",
+    "STATIC-CURRENCY": "Formato de Divisa Estático",
+    "SEND": "Enviar idioma",
+    "BACK": "Volver"
+  }
+}

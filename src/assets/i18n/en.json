@@ -1,0 +1,15 @@
+{
+  "I18N": {
+    "TITLE": "Hello Angular with ngx-translate!",
+    "SELECT": "Change language",
+    "TIME": "Actual Time: ",
+    "CURRENCY": "Current Pipe: ",
+    "DYNAMICALLY": "Dynamically:",
+    "CURRENT": "Current: ",
+    "STATIC": "Static Date and Time format",
+    "STATIC-TIME": "Static Time Format",
+    "STATIC-CURRENCY": "Static Currency Format",
+    "SEND": "Send Language",
+    "BACK": "Go Back"
+  }
+}

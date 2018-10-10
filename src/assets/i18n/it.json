@@ -1,0 +1,14 @@
+{
+  "I18N": {
+    "TITLE": "Ciao Angolare con ngx-translate!",
+    "CURRENT": "distintivo",
+    "DYNAMICALLY": "dinamicamente",
+    "TIME": "Ora corrente",
+    "CURRENCY": "Tubo di valuta",
+    "STATIC": "Formato statico di data e ora",
+    "STATIC-TIME": "Formato dell 'ora statico",
+    "STATIC-CURRENCY": "Formato valuta statico",
+    "SEND": "Invia lingua",
+    "BACK": "Ritorno"
+  }
+}
