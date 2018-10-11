@@ -1,0 +1,12 @@
+$countries: en es fr it;
+
+@each $country in $countries {
+  .flag-icon-#{$country} {
+    background-image: url('/assets/img/#{$country}.jpg');
+  }
+}
+
+
+.grid-container-bottom {
+  margin-top: 2%;
+}

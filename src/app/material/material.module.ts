@@ -57,6 +57,6 @@ import {
     { provide: ErrorStateMatcher, useClass: ShowOnDirtyErrorStateMatcher }
   ]
 })
-export class MyOwnCustomMaterialModule {
+export class MaterialModule {
   constructor() {}
 }

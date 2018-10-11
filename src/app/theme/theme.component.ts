@@ -55,7 +55,7 @@ export class ThemeComponent {
     private sanitizer: DomSanitizer
   ) {
     this.iconRegistry.addSvgIcon('suuShinChuu', this.sanitizer.bypassSecurityTrustResourceUrl(// 'assets/images/Suu-Shinchuu.png'
-        'assets/images/ok.svg'));
+        'assets/images/Suu-Shinchuu.svg'));
   }
 
   openDialog(): void {

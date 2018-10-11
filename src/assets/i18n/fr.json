@@ -1,0 +1,14 @@
+{
+	"I18N": {
+		"CURRENCY": "Pipe de monnaie",
+		"CURRENT": "La monnaie",
+		"DYNAMICALLY": "Dynamiquement",
+		"TIME": "Heure actuelle",
+    "TITLE": "Salut angulaire avec ngx-translate!",
+    "STATIC": "Format statique de date et heure",
+    "STATIC-TIME": "Format d 'heure statique",
+    "STATIC-CURRENCY": "Format de devise statique ",
+    "SEND": "Envoyer la langue",
+    "BACK": "Revenir "
+	}
+}
